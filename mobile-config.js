@@ -1,7 +1,7 @@
 // basic info
 App.info({
-  name: 'Poo-Patrol',
-  description: 'Patrol yor town!',
+  name: 'Muck Mapper',
+  description: 'Map that Muck!',
   author: 'James Seden Smith',
   email: 'sedders123@gmail.com',
   website: 'http://sedders123.me'
