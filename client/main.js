@@ -1,3 +1,4 @@
+var pos;
 // on startup run resizing event
 Meteor.startup(function() {
   $(window).resize(function() {
@@ -26,7 +27,8 @@ Template.map.rendered = function() {
   var map = L.map('map', {
     doubleClickZoom: false,
     attributionControl: false
-  }).setView([54.1881, -2.109375], 6);
+  });
+  map.locate({setView:true});
 
   L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
 
