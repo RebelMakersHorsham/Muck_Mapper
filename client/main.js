@@ -10,6 +10,7 @@ Meteor.startup(function() {
   });
 });
 
+
 // create marker collection
 var Markers = new Meteor.Collection('markers');
 
@@ -23,7 +24,8 @@ Template.map.rendered = function() {
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
   var map = L.map('map', {
-    doubleClickZoom: false
+    doubleClickZoom: false,
+    attributionControl: false
   }).setView([54.1881, -2.109375], 6);
 
   L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
@@ -57,17 +59,17 @@ Template.map.rendered = function() {
   });
 };
 
-//Template.example.events({
-//    'click .takePhoto': function(event, template) {
-//        var cameraOptions = {
-//            width: 800,
-//            height: 600
-//        };
-//        MeteorCamera.getPicture(cameraOptions, function (error, data) {
-//           if (!error) {
-//               template.$('.photo').attr('src', data);
-//           }
-//        });
-//        event.preventDefault();
-//    }
-//});
+Template.camera_button.events({
+    'click .takePhoto': function(event, template) {
+        var cameraOptions = {
+            width: 800,
+            height: 600
+        };
+        MeteorCamera.getPicture(cameraOptions, function (error, data) {
+           if (!error) {
+               template.$('.photo').attr('src', data);
+           }
+        });
+        event.preventDefault();
+    }
+});

@@ -29,9 +29,11 @@ bevanhunt:leaflet
 
 webapp
 browser-policy
-logging
+miktam:loggly
 reload
 random
 ejson
 spacebars
 check
+fortawesome:fontawesome
+reactive-var

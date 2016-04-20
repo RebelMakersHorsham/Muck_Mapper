@@ -23,16 +23,12 @@ body
   div
     {{> map}}
     
-    div.notice
-        | Double-click on map creates a marker<br>
-        | Click on a marker to delete it
-
-
-    
-//    div.card
-//      div(style="width: 100%").card-content.waves-effect
-//        span.card-title Trains
-//        p Blurb about train
+  div.notice
+      {{> camera_button}}
+        
 template(name="map")
     div.map(id="map")
     
+template(name="camera_button")
+    a.btn-floating.btn-large.waves-effect.waves-light.red
+      i.fa.fa-camera.takePhoto
