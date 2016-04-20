@@ -22,3 +22,16 @@ mquandalle:stylus
 materialize:materialize
 standard-minifier-css
 standard-minifier-js
+mdg:camera
+mdg:geolocation
+launch-screen
+bevanhunt:leaflet
+
+webapp
+browser-policy
+logging
+reload
+random
+ejson
+spacebars
+check

@@ -1,0 +1,48 @@
+body {
+  background-color: #EBEBEB;
+}
+nav {
+    height: 10vh;
+    line-height: 10vh;
+}
+.navbar-fixed{
+  margin-top: 0;
+  margin-bottom: 30px; 
+}
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 10vh;
+    line-height: 10vh;
+}
+
+nav .button-collapse i {
+    height: 10vh;
+    line-height: 10vh;
+}
+
+nav .brand-logo {
+    font-size: 1.6rem;
+}
+
+@media only screen and (min-width: 601px){
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        height: 10vh;
+        line-height: 10vh;
+    }
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial;
+}
+.map {
+  border: solid 1px black;
+}
+
+.notice {
+  margin: 10px 0 5px 0;
+  line-height: 1.5;
+  text-align: center;
+}
