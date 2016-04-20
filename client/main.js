@@ -15,6 +15,10 @@ var Markers = new Meteor.Collection('markers');
 
 Meteor.subscribe('markers');
 
+var pooIcon = L.icon({
+    iconUrl: 'images/marker.png',
+    iconAnchor:   [18, 18],
+});
 Template.map.rendered = function() {
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
@@ -32,7 +36,7 @@ Template.map.rendered = function() {
   var query = Markers.find();
   query.observe({
     added: function (document) {
-      var marker = L.marker(document.latlng).addTo(map)
+      var marker = L.marker(document.latlng, {icon: pooIcon}).addTo(map)
         .on('click', function(event) {
           map.removeLayer(marker);
           Markers.remove({_id: document._id});
