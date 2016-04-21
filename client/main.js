@@ -1,4 +1,9 @@
-var pos;
+// Set up logger
+logger ={};
+logger.log = function(message){
+  Meteor.call('clientLog', message);
+};
+
 // on startup run resizing event
 Meteor.startup(function() {
   $(window).resize(function() {
@@ -11,6 +16,17 @@ Meteor.startup(function() {
   });
 });
 
+Template.body.helpers({
+    photoUrl: function () {
+      return Session.get("photo");
+    },
+    deleteHash: function () {
+      return Session.get("deleteHash");
+    },
+    waitingForApiResponse: function () {
+      return Session.get("waitingForApiResponse");
+    }
+  });
 
 // create marker collection
 var Markers = new Meteor.Collection('markers');
@@ -21,6 +37,7 @@ var pooIcon = L.icon({
     iconUrl: 'images/marker.png',
     iconAnchor:   [18, 18],
 });
+
 Template.map.rendered = function() {
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
@@ -63,15 +80,31 @@ Template.map.rendered = function() {
 
 Template.camera_button.events({
     'click .takePhoto': function(event, template) {
-        var cameraOptions = {
+      Session.set('waitingForApiResponse', true);
+      var cameraOptions = {
             width: 800,
-            height: 600
-        };
-        MeteorCamera.getPicture(cameraOptions, function (error, data) {
-           if (!error) {
-               template.$('.photo').attr('src', data);
-           }
-        });
-        event.preventDefault();
+            height: 600,
+            quality: 100
+      };
+      MeteorCamera.getPicture(cameraOptions, function (error, data) {
+        if (error) {
+          throw error;
+        } else {
+          Imgur.upload({
+            image: data,
+            apiKey: Meteor.settings.public.imgurID
+          }, function (error, data) {
+            Session.set('waitingForApiResponse', false);
+            if (error) {
+              throw error;
+            } else {
+              Session.set("photo", data.link);
+              logger.log({link: data.link});
+              Session.set("deleteHash", data.deletehash);
+            }
+          });
+        }
+      });
+      event.preventDefault();
     }
 });

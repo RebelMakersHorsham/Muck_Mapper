@@ -123,3 +123,7 @@ Session.vim
 *~
 # auto-generated tag files
 tags
+
+.deploy/
+server/kadira.js
+settings.json
