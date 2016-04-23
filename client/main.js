@@ -4,17 +4,12 @@ logger.log = function(message){
   Meteor.call('clientLog', message);
 };
 
-// on startup run resizing event
-Meteor.startup(function() {
-  $(window).resize(function() {
-    $('#map').css('height', window.innerHeight - 82 - 45);
-  });
-  $(window).resize(); // trigger resize event
+Template.nav.rendered = function() {
   $(".button-collapse").sideNav({
     edge: 'right', // Choose the horizontal origin
     closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
   });
-});
+};
 
 Template.body.helpers({
     photoUrl: function () {

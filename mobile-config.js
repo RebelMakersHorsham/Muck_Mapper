@@ -9,6 +9,7 @@ App.info({
 
 // CORS for Meteor app
 App.accessRule('meteor.local/*');
+App.accessRule('localhost/*');
 // allow tiles
 App.accessRule('*.openstreetmap.org/*');
 App.accessRule('*.tile.thunderforest.com/*');

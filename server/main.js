@@ -8,6 +8,14 @@ Meteor.startup(function(){
         },
         json: "true"
       });
+
+  Accounts.config({
+      sendVerificationEmail: true
+  });
+
+  process.env.MAIL_URL = 'smtp://' + encodeURIComponent(Meteor.settings.sendgridUser) + ':' + encodeURIComponent(Meteor.settings.sendgridPassword) + '@smtp.sendgrid.net:587';
+
+
 });
 
 // marker collection
