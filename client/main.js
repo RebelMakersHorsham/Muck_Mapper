@@ -75,6 +75,7 @@ Template.map.rendered = function() {
 
 Template.camera_button.events({
     'click .takePhoto': function(event, template) {
+      event.preventDefault();
       Session.set('waitingForApiResponse', true);
       var cameraOptions = {
             width: 800,
@@ -99,7 +100,6 @@ Template.camera_button.events({
             }
           });
         }
-      });
-      event.preventDefault();
+      });  
     }
 });

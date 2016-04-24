@@ -2,5 +2,11 @@ template(name="map")
   div.map(id="map")
   
 template(name="camera_button")
-  a.btn-floating.btn-large.waves-effect.waves-light.red
-    i.fa.fa-camera.takePhoto
+  div.fixed-action-btn
+     a.btn-floating.btn-large.waves-effect.waves-light.red
+       i.fa.fa-plus
+     ul
+       li
+         a.btn-floating.btn-small.waves-effect.waves-light
+          i.mdi.mdi-emoticon-poop.takePhoto
+        

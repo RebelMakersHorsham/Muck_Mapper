@@ -23,7 +23,7 @@ nav .button-collapse i {
 nav .brand-logo {
     font-size: 1.6rem;
 }
-.btn-floating {
+.fixed-action-btn {
   position: absolute;
   bottom: 16px;
   right: 16px;
@@ -32,7 +32,7 @@ nav .brand-logo {
     nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
         line-height: 10vh;
     }
-    .btn-floating {
+    .fixed-action-btn {
       bottom: 24px;
       right: 24px;
     }
